@@ -13,6 +13,5 @@ define([
     'css!package/quiqqer/calendar-controls/bin/Source/datepicker_dashboard/datepicker_dashboard.css'
 ], function (Picker, Attach, DatePicker) {
     "use strict";
-
     return DatePicker;
 });

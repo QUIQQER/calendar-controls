@@ -1,5 +1,5 @@
 
-QUIQQER Kalender COntrols
+QUIQQER Kalender Controls
 ========
 
 GUI Element um Kalender anzuzeigen
@@ -13,6 +13,7 @@ Features (Funktionen)
 --------
 
 - JavaScript Kalender Control
+- JavaScript Kalender Sceduler
 
 Installation
 ------------
@@ -41,3 +42,11 @@ MIT
 
 Entwickler
 --------
+
+```javascript
+
+require(['package/quiqqer/calendar-controls/bin/Scheduler'], function(Scheduler) {
+    console.log(Scheduler);
+});
+
+```
