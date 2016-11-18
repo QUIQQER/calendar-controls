@@ -2,7 +2,7 @@
   "name": "quiqqer\/calendar-controls",
   "type": "quiqqer-library",
   "description": "Calendar Controls for QUIQQER",
-  "version": "dev-master",
+  "version": "dev-dev",
   "license": "GPLv2",
   "authors": [
     {
