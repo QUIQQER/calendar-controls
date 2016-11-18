@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locales>
-
-    <groups name="quiqqer/calendar" datatype="js">
-        <locale name="use_mouse_wheel">
-            <de><![CDATA[Mit dem Mausrad können Sie schneller die Werte ändern.]]></de>
-            <en><![CDATA[Use the mouse wheel to quickly change value.]]></en>
+    <groups name="quiqqer/calendar-controls" datatype="js,php">
+        <locale name="package.title">
+            <de><![CDATA[QUIQQER - Kalender Controls]]></de>
+            <en><![CDATA[QUIQQER - Calendar Controls]]></en>
         </locale>
-        <locale name="time_confirm_button">
-            <de><![CDATA[OK]]></de>
-            <en><![CDATA[OK]]></en>
+        <locale name="package.title">
+            <de><![CDATA[Stellt verschiedenen Kalender Oberflächen zur Verfügung.]]></de>
+            <en><![CDATA[Provides various calendar controls / elements.]]></en>
         </locale>
-        <locale name="select_a_time">
-            <de><![CDATA[Wählen Sie eine Zeit]]></de>
-            <en><![CDATA[Select a time]]></en>
-        </locale>
-
-    </groups>
-
-
-    <groups name="quiqqer/calendar" datatype="js,php">
         <locale name="month">
             <de><![CDATA[Monat]]></de>
             <en><![CDATA[Month]]></en>
@@ -32,7 +22,7 @@
             <en><![CDATA[Year]]></en>
         </locale>
 
-    <!-- week days -->
+        <!-- week days -->
         <locale name="monday">
             <de><![CDATA[Montag]]></de>
             <en><![CDATA[Monday]]></en>
@@ -91,7 +81,7 @@
             <en><![CDATA[Sun]]></en>
         </locale>
 
-    <!-- month -->
+        <!-- month -->
         <locale name="month.01">
             <de><![CDATA[Januar]]></de>
             <en><![CDATA[January]]></en>
@@ -188,6 +178,21 @@
         <locale name="month.12.short">
             <de><![CDATA[Dez]]></de>
             <en><![CDATA[Dec]]></en>
+        </locale>
+    </groups>
+
+    <groups name="quiqqer/calendar-controls" datatype="js">
+        <locale name="use_mouse_wheel">
+            <de><![CDATA[Mit dem Mausrad können Sie schneller die Werte ändern.]]></de>
+            <en><![CDATA[Use the mouse wheel to quickly change value.]]></en>
+        </locale>
+        <locale name="time_confirm_button">
+            <de><![CDATA[OK]]></de>
+            <en><![CDATA[OK]]></en>
+        </locale>
+        <locale name="select_a_time">
+            <de><![CDATA[Wählen Sie eine Zeit]]></de>
+            <en><![CDATA[Select a time]]></en>
         </locale>
     </groups>
 
