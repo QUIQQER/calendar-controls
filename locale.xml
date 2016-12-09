@@ -5,7 +5,7 @@
             <de><![CDATA[QUIQQER - Kalender Controls]]></de>
             <en><![CDATA[QUIQQER - Calendar Controls]]></en>
         </locale>
-        <locale name="package.title">
+        <locale name="package.description">
             <de><![CDATA[Stellt verschiedenen Kalender Oberflächen zur Verfügung.]]></de>
             <en><![CDATA[Provides various calendar controls / elements.]]></en>
         </locale>
