@@ -18,46 +18,41 @@ require.config({
     }
 });
 
-var localeNeedles = [];
-var localeFile    = '';
-
-if ("QUIQQER_PROJECT" in window) {
-    localeFile = URL_OPT_DIR + 'quiqqer/calendar-controls/bin/' +
-                 'htmlxScheduler/locale/' +
-                 'locale_' + window.QUIQQER_PROJECT.lang + '.js';
-
-    localeNeedles.push(window.QUIQQER_PROJECT.lang);
-}
-
-if ("USER" in window) {
-    localeFile = URL_OPT_DIR + 'quiqqer/calendar-controls/bin/' +
-                 'htmlxScheduler/locale/' +
-                 'locale_' + window.USER.lang + '.js';
-
-    if (!localeNeedles.contains(window.USER.lang)) {
-        localeNeedles.push(window.USER.lang);
-    }
-}
-
-var i, len, key, lang;
-
 var dhtmlxscheduler = ['dhtmlxscheduler'];
-var shim            = {};
 
-for (i = 0, len = localeNeedles.length; i < len; i++) {
-    lang = localeNeedles[i];
-    key  = 'dhtmlxschedulerLocale/locale_' + lang;
+(function () {
+    "use strict";
 
-    shim[key] = {
-        deps: ['dhtmlxscheduler']
-    };
+    var localeNeedles = [];
 
-    dhtmlxscheduler.push(key);
-}
+    if ("QUIQQER_PROJECT" in window) {
+        localeNeedles.push(window.QUIQQER_PROJECT.lang);
+    }
 
-requirejs.config({
-    shim: shim
-});
+    if ("USER" in window) {
+        if (!localeNeedles.contains(window.USER.lang)) {
+            localeNeedles.push(window.USER.lang);
+        }
+    }
+
+    var i, len, key, lang;
+    var shim = {};
+
+    for (i = 0, len = localeNeedles.length; i < len; i++) {
+        lang = localeNeedles[i];
+        key  = 'dhtmlxschedulerLocale/locale_' + lang;
+
+        shim[key] = {
+            deps: ['dhtmlxscheduler']
+        };
+
+        dhtmlxscheduler.push(key);
+    }
+
+    requirejs.config({
+        shim: shim
+    });
+})();
 
 define('package/quiqqer/calendar-controls/bin/Scheduler', dhtmlxscheduler, function () {
     "use strict";
