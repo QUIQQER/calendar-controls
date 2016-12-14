@@ -2,6 +2,8 @@
  * Load the HTML X Scheduler
  *
  * @author www.pcsg.de (Henning Leutz)
+ *
+ * you can use require(['package/quiqqer/calendar-controls/bin/Scheduler'])
  */
 
 // scheduler
