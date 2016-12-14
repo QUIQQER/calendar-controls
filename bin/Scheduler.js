@@ -9,9 +9,7 @@ define('dhtmlxscheduler', [
     URL_OPT_DIR + 'quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler.js',
     'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler.css',
     'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler_flat.css'
-], function () {
-    console.warn(window.scheduler);
-});
+]);
 
 // locale
 require.config({
