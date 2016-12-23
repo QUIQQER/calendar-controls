@@ -20,7 +20,10 @@ require.config({
     }
 });
 
-var dhtmlxscheduler = ['dhtmlxscheduler'];
+var dhtmlxscheduler = [
+    'package/quiqqer/calendar-controls/bin/classes/Scheduler',
+    'dhtmlxscheduler'
+];
 
 (function () {
     "use strict";
@@ -56,7 +59,7 @@ var dhtmlxscheduler = ['dhtmlxscheduler'];
     });
 })();
 
-define('package/quiqqer/calendar-controls/bin/Scheduler', dhtmlxscheduler, function () {
+define('package/quiqqer/calendar-controls/bin/Scheduler', dhtmlxscheduler, function (Bridge) {
     "use strict";
-    return window.scheduler;
+    return new Bridge();
 });

@@ -43,10 +43,47 @@ MIT
 Entwickler
 --------
 
+### JavaScript Scheduler bekommen:
+
+Ein Scheduler ist ein Kalender Objekt welches einen grossen Kalender verwaltet.
+Scheduler: https://dhtmlx.com/docs/products/dhtmlxScheduler/
+
 ```javascript
 
 require(['package/quiqqer/calendar-controls/bin/Scheduler'], function(Scheduler) {
-    console.log(Scheduler);
+    console.log(Scheduler.getScheduler());
+});
+
+```
+
+### JavaScript Scheduler Erweiterungen laden:
+
+```javascript
+
+require([
+    'package/quiqqer/calendar-controls/bin/Scheduler'
+], function(Scheduler) {
+    Scheduler.loadExtension('agenda_view').then(function(Scheduler) {
+        console.log(Scheduler.getScheduler());
+    });
+});
+
+```
+
+```javascript
+
+// Mehrere Erweiterungen laden
+
+require([
+    'package/quiqqer/calendar-controls/bin/Scheduler'
+], function(Scheduler) {
+    Promise.all([
+        Scheduler.loadExtension('agenda_view'),
+        Scheduler.loadExtension('collision'),
+        Scheduler.loadExtension('cookie')
+    ]).then(function(Scheduler) {
+        console.log(Scheduler.getScheduler());
+    });
 });
 
 ```
