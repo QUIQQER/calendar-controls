@@ -7,5 +7,19 @@
         <description>
             <locale group="quiqqer/calendar-controls" var="package.description"/>
         </description>
+
+        <support>
+            <email>support@pcsg.de</email>
+            <forum>https://community.quiqqer.com</forum>
+            <source>https://dev.quiqqer.com/quiqqer/calendar-controls</source>
+            <issues>https://dev.quiqqer.com/quiqqer/calendar-controls/issues</issues>
+            <wiki>https://dev.quiqqer.com/quiqqer/calendar-controls/wikis/home</wiki>
+        </support>
+
+        <copyright>
+            <name><![CDATA[PCSG - Computer & Internet Service OHG]]></name>
+            <license></license>
+        </copyright>
+
     </package>
 </quiqqer>
