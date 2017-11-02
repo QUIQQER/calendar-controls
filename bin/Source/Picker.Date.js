@@ -204,7 +204,7 @@ define([
             date.set('minutes', initMinutes);
 
             var hoursInput = new Element('input.hour[type=text]', {
-                title    : QUILocale.get('quiqqer/calendar', 'use_mouse_wheel'),
+                title    : QUILocale.get('quiqqer/calendar-controls', 'use_mouse_wheel'),
                 value    : date.format('%H'),
                 events   : {
                     click     : function (event) {
@@ -225,7 +225,7 @@ define([
             }).inject(container);
 
             var minutesInput = new Element('input.minutes[type=text]', {
-                title    : QUILocale.get('quiqqer/calendar', 'use_mouse_wheel'),
+                title    : QUILocale.get('quiqqer/calendar-controls', 'use_mouse_wheel'),
                 value    : date.format('%M'),
                 events   : {
                     click     : function (event) {
@@ -251,7 +251,7 @@ define([
             new Element('div.separator[text=:]').inject(container);
 
             new Element('input[type=submit]', {
-                value  : QUILocale.get('quiqqer/calendar', 'time_confirm_button'),
+                value  : QUILocale.get('quiqqer/calendar-controls', 'time_confirm_button'),
                 'class': 'qui-button ok',
                 events : {
                     click: function (event) {
