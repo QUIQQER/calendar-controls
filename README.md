@@ -40,7 +40,7 @@ We will try to respond to your request and forward it to the responsible develop
 License
 -------
 
-MIT
+GNU GPL v2
 
 
 Usage
