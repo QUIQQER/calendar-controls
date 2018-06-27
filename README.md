@@ -15,6 +15,7 @@ Features
 - JavaScript Calendar Control
 - JavaScript Calendar Scheduler
 
+
 Installation
 ------------
 
@@ -40,3 +41,52 @@ License
 -------
 
 MIT
+
+
+Usage
+-----
+
+### Javascript: Get Scheduler:
+
+A scheduler is a calendar object which manages a calendar.  
+Scheduler: https://dhtmlx.com/docs/products/dhtmlxScheduler/  
+
+```javascript
+
+require(['package/quiqqer/calendar-controls/bin/Scheduler'], function(Scheduler) {
+    console.log(Scheduler.getScheduler());
+});
+
+```
+
+### JavaScript: Load Scheduler Extensions:
+
+```javascript
+
+require([
+    'package/quiqqer/calendar-controls/bin/Scheduler'
+], function(Scheduler) {
+    Scheduler.loadExtension('agenda_view').then(function(Scheduler) {
+        console.log(Scheduler.getScheduler());
+    });
+});
+
+```
+
+```javascript
+
+// Load multiple extensions
+
+require([
+    'package/quiqqer/calendar-controls/bin/Scheduler'
+], function(Scheduler) {
+    Promise.all([
+        Scheduler.loadExtension('agenda_view'),
+        Scheduler.loadExtension('collision'),
+        Scheduler.loadExtension('cookie')
+    ]).then(function(Scheduler) {
+        console.log(Scheduler.getScheduler());
+    });
+});
+
+```
