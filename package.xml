@@ -8,6 +8,12 @@
             <locale group="quiqqer/calendar-controls" var="package.description"/>
         </description>
 
+        <preview>
+            <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/1.png"/>
+            <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/2.png"/>
+            <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/3.png"/>
+        </preview>
+
         <support>
             <email><![CDATA[support@pcsg.de]]></email>
             <forum><![CDATA[https://community.quiqqer.com]]></forum>
