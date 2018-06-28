@@ -1,27 +1,29 @@
+![QUIQQER Calendar Controls](bin/images/Readme.png)
 
-QUIQQER Kalender Controls
+QUIQQER Calender Controls
 ========
 
-GUI Element um Kalender anzuzeigen
+GUI Element to display a calendar.
 
-Paketname:
+Package name:
 
     quiqqer/calendar-controls
 
 
-Features (Funktionen)
+Features
 --------
 
-- JavaScript Kalender Control
-- JavaScript Kalender Sceduler
+- JavaScript Calendar Control
+- JavaScript Calendar Scheduler
+
 
 Installation
 ------------
 
-Der Paketname ist: quiqqer/calendar-controls
+The package name is: quiqqer/calendar-controls
 
 
-Mitwirken
+Contribution
 ----------
 
 - Issue Tracker: https://dev.quiqqer.com/quiqqer/calendar-controls/issues
@@ -31,22 +33,24 @@ Mitwirken
 Support
 -------
 
-Falls Sie ein Fehler gefunden haben, oder Verbesserungen wünschen,
-dann können Sie gerne an support@pcsg.de eine E-Mail schreiben.
+If you found any flaws, have any wishes or suggestions you can send an email
+to [support@pcsg.de](mailto:support@pcsg.de) to inform us about your concerns. 
+We will try to respond to your request and forward it to the responsible developer.
 
 
-Lizenz
+License
 -------
 
-MIT
+GNU GPL v2
 
-Entwickler
---------
 
-### JavaScript Scheduler bekommen:
+Usage
+-----
 
-Ein Scheduler ist ein Kalender Objekt welches einen grossen Kalender verwaltet.
-Scheduler: https://dhtmlx.com/docs/products/dhtmlxScheduler/
+### Javascript: Get Scheduler:
+
+A scheduler is a calendar object which manages a calendar.  
+Scheduler: https://dhtmlx.com/docs/products/dhtmlxScheduler/  
 
 ```javascript
 
@@ -56,7 +60,7 @@ require(['package/quiqqer/calendar-controls/bin/Scheduler'], function(Scheduler)
 
 ```
 
-### JavaScript Scheduler Erweiterungen laden:
+### JavaScript: Load Scheduler Extensions:
 
 ```javascript
 
@@ -72,7 +76,7 @@ require([
 
 ```javascript
 
-// Mehrere Erweiterungen laden
+// Load multiple extensions
 
 require([
     'package/quiqqer/calendar-controls/bin/Scheduler'

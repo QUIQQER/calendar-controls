@@ -7,5 +7,27 @@
         <description>
             <locale group="quiqqer/calendar-controls" var="package.description"/>
         </description>
+
+        <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/Logo.png"/>
+
+        <preview>
+            <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/1.png"/>
+            <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/2.png"/>
+            <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/3.png"/>
+        </preview>
+
+        <support>
+            <email><![CDATA[support@pcsg.de]]></email>
+            <forum><![CDATA[https://community.quiqqer.com]]></forum>
+            <source><![CDATA[https://dev.quiqqer.com/quiqqer/calendar-controls]]></source>
+            <issues><![CDATA[https://dev.quiqqer.com/quiqqer/calendar-controls/issues]]></issues>
+            <wiki><![CDATA[https://dev.quiqqer.com/quiqqer/calendar-controls/wikis/home]]></wiki>
+        </support>
+
+        <copyright>
+            <name><![CDATA[PCSG - Computer & Internet Service OHG]]></name>
+            <license><![CDATA[GNU GPL v2]]></license>
+        </copyright>
+
     </package>
 </quiqqer>
