@@ -8,6 +8,8 @@
             <locale group="quiqqer/calendar-controls" var="package.description"/>
         </description>
 
+        <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/Logo.png"/>
+
         <preview>
             <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/1.png"/>
             <image src="URL_OPT_DIR/quiqqer/calendar-controls/bin/images/preview/2.png"/>

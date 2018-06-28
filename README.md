@@ -1,3 +1,4 @@
+![QUIQQER Calendar Controls](bin/images/Readme.png)
 
 QUIQQER Calender Controls
 ========
