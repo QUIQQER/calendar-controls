@@ -11,7 +11,8 @@ define('dhtmlxscheduler', [
     URL_OPT_DIR + 'quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler.js',
     'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler.css',
     'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler_flat.css',
-    'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler_custom.css'
+    'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/dhtmlxscheduler_custom.css',
+    'css!package/quiqqer/calendar-controls/bin/htmlxScheduler/custom.css'
 ]);
 
 // locale
