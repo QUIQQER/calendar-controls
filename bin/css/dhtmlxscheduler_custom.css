@@ -9,7 +9,7 @@
 }
 
 .dhx_cal_data td {
-    padding: initial;
+    padding: 0;
 }
 
 /* Templates overwrote the textarea background property.  This caused problems when adding events on the front-end. */
