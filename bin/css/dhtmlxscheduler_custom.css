@@ -1,0 +1,60 @@
+/********************************************************************
+ *       A stylesheet for QUIQQER-related custom CSS.               *
+ ********************************************************************/
+
+
+/* region template-business-pro fixes */
+.dhx_cal_data tr {
+    background: initial;
+}
+
+.dhx_cal_data td {
+    padding: 0;
+}
+
+/* Templates overwrote the textarea background property.  This caused problems when adding events on the front-end. */
+textarea.dhx_cal_editor {
+    background: white;
+}
+
+/* endregion */
+
+.dhx_cal_header .dhx_scale_bar {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/* region menu bar responsiveness fixes */
+@media (max-width: 900px) {
+    .dhx_cal_navline .dhx_cal_date {
+        display: none;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .dhx_cal_next_button, .dhx_cal_prev_button {
+        width: 20px;
+    }
+
+    .dhx_cal_today_button {
+        display: none;
+    }
+
+    .dhx_cal_tab {
+        width: 50px;
+    }
+}
+
+@media (max-width: 550px) {
+    .dhx_cal_tab[name=agenda_tab] {
+        display: none;
+    }
+
+}
+
+
+/* endregion */

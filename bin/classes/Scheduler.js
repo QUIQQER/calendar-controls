@@ -44,7 +44,7 @@ define('package/quiqqer/calendar-controls/bin/classes/Scheduler', [
 
             return new Promise(function (resolve) {
                 var extensionUrl = URL_OPT_DIR + 'quiqqer/calendar-controls/' +
-                                   'bin/htmlxScheduler/ext/' +
+                                   'bin/Source/dhtmlxScheduler/ext/' +
                                    'dhtmlxscheduler_' + extName + '.js';
 
                 require([extensionUrl], function () {
