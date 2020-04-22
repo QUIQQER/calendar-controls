@@ -8,13 +8,12 @@ provides: Picker
 ...
 */
 
-define(function()
-{
+define(function () {
     "use strict";
 
     return new Class({
 
-        Implements: [ Options, Events ],
+        Implements: [Options, Events],
 
         options: {/*
             onShow: function(){},
@@ -22,58 +21,52 @@ define(function()
             onHide: function(){},
             onClose: function(){},*/
 
-            pickerClass: 'datepicker',
-            inject: null,
+            pickerClass      : 'datepicker',
+            inject           : null,
             animationDuration: 400,
-            useFadeInOut: true,
-            positionOffset: {x: 0, y: 0},
-            pickerPosition: 'bottom',
-            draggable: true,
-            showOnInit: true,
-            columns: 1,
-            footer: false
+            useFadeInOut     : true,
+            positionOffset   : {
+                x: 0,
+                y: 0
+            },
+            pickerPosition   : 'bottom',
+            draggable        : true,
+            showOnInit       : true,
+            columns          : 1,
+            footer           : false
         },
 
-        initialize: function(options){
+        initialize: function (options) {
             this.setOptions(options);
             this.constructPicker();
             if (this.options.showOnInit) this.show();
         },
 
-        constructPicker: function(){
+        constructPicker: function () {
             var options = this.options;
 
             var picker = this.picker = new Element('div', {
                 'class': options.pickerClass,
-                styles: {
-                    left: 0,
-                    top: 0,
+                styles : {
+                    left   : 0,
+                    top    : 0,
                     display: 'none',
                     opacity: 0
                 }
             }).inject(options.inject || document.body);
-            picker.addClass('column_' + options.columns);
 
-            if (options.useFadeInOut)
-            {
-                /*
-                picker.set('tween', {
-                    duration: options.animationDuration,
-                    link: 'cancel'
-                });
-                */
-            }
+            picker.addClass('column_' + options.columns);
 
             // Build the header
             var header = this.header = new Element('div.header').inject(picker);
 
-            var title = this.title = new Element('div.title').inject(header);
-            var titleID = this.titleID = 'pickertitle-' + String.uniqueID();
+            var title      = this.title = new Element('div.title').inject(header);
+            var titleID    = this.titleID = 'pickertitle-' + String.uniqueID();
             this.titleText = new Element('div', {
-                'role': 'heading',
-                'class': 'titleText',
-                'id': titleID,
-                'aria-live': 'assertive',
+                'role'       : 'heading',
+                'class'      : 'titleText',
+                'id'         : titleID,
+                'aria-live'  : 'assertive',
                 'aria-atomic': 'true'
             }).inject(title);
 
@@ -84,7 +77,7 @@ define(function()
             // Build the body of the picker
             var body = this.body = new Element('div.body').inject(picker);
 
-            if (options.footer){
+            if (options.footer) {
                 this.footer = new Element('div.footer').inject(picker);
                 picker.addClass('footer');
             }
@@ -93,23 +86,23 @@ define(function()
             var slider = this.slider = new Element('div.slider', {
                 styles: {
                     position: 'absolute',
-                    top: 0,
-                    left: 0
+                    top     : 0,
+                    left    : 0
                 }
             }).inject(body);
 
             this.newContents = new Element('div', {
                 styles: {
                     position: 'absolute',
-                    top: 0,
-                    left: 0
+                    top     : 0,
+                    left    : 0
                 }
             }).inject(slider);
 
             this.oldContents = new Element('div', {
                 styles: {
                     position: 'absolute',
-                    top: 0
+                    top     : 0
                 }
             }).inject(slider);
 
@@ -117,10 +110,10 @@ define(function()
             this.setColumns(options.columns);
 
             // IFrameShim for select fields in IE
-            var shim = this.shim = window['IframeShim'] ? new IframeShim(picker) : null;
+            var shim = this.shim = null;
 
             // Dragging
-            if (options.draggable && typeOf(picker.makeDraggable) == 'function'){
+            if (options.draggable && typeOf(picker.makeDraggable) === 'function') {
                 this.dragger = picker.makeDraggable(shim ? {
                     onDrag: shim.position.bind(shim)
                 } : null);
@@ -128,20 +121,18 @@ define(function()
             }
         },
 
-        open: function(noFx)
-        {
+        open: function (noFx) {
             if (this.opened === true) return this;
             this.opened = true;
-            var picker = this.picker.setStyle('display', 'block').set('aria-hidden', 'false');
+            var picker  = this.picker.setStyle('display', 'block').set('aria-hidden', 'false');
             if (this.shim) this.shim.show();
             this.fireEvent('open');
 
-            if (this.options.useFadeInOut && !noFx)
-            {
-                moofx( picker ).animate({
-                    opacity : 1
+            if (this.options.useFadeInOut && !noFx) {
+                moofx(picker).animate({
+                    opacity: 1
                 }, {
-                    callback : this.fireEvent.pass('show', this)
+                    callback: this.fireEvent.pass('show', this)
                 });
 
                 //picker.fade('in').get('tween').chain(this.fireEvent.pass('show', this));
@@ -152,45 +143,40 @@ define(function()
             return this;
         },
 
-        show: function(){
+        show: function () {
             return this.open(true);
         },
 
-        close: function(noFx)
-        {
+        close: function (noFx) {
             if (this.opened === false) return this;
 
             // element.set( 'data-oldDate', '0000-00-00 00:00:00' )
-            this.inputs.each(function(input)
-            {
-                if ( input.get('value') != '0000-00-00 00:00:00' &&
-                     input.get('value') !== '' )
-                {
+            this.inputs.each(function (input) {
+                if (input.get('value') !== '0000-00-00 00:00:00' &&
+                    input.get('value') !== '') {
                     return;
                 }
 
-                if ( input.get( 'data-oldDate' ) )
-                {
-                    input.set( 'value', input.get( 'data-oldDate' ) );
-                    input.set( 'data-oldDate', null );
+                if (input.get('data-oldDate')) {
+                    input.set('value', input.get('data-oldDate'));
+                    input.set('data-oldDate', null);
                 }
             });
 
             this.opened = false;
             this.fireEvent('close');
 
-            var self = this, picker = this.picker, hide = function(){
+            var self = this, picker = this.picker, hide = function () {
                 picker.setStyle('display', 'none').set('aria-hidden', 'true');
                 if (self.shim) self.shim.hide();
                 self.fireEvent('hide');
             };
 
-            if (this.options.useFadeInOut && !noFx)
-            {
-                moofx( picker ).animate({
-                    opacity : 0
+            if (this.options.useFadeInOut && !noFx) {
+                moofx(picker).animate({
+                    opacity: 0
                 }, {
-                    callback : hide
+                    callback: hide
                 });
 
                 //picker.fade('out').get('tween').chain(hide);
@@ -201,40 +187,40 @@ define(function()
             return this;
         },
 
-        hide: function(){
+        hide: function () {
             return this.close(true);
         },
 
-        toggle: function(){
+        toggle: function () {
             return this[this.opened === true ? 'close' : 'open']();
         },
 
-        destroy: function(){
+        destroy: function () {
             this.picker.destroy();
             if (this.shim) this.shim.destroy();
         },
 
-        position: function(x, y){
-            var offset = this.options.positionOffset,
-                scroll = document.getScroll(),
-                size = document.getSize(),
+        position: function (x, y) {
+            var offset     = this.options.positionOffset,
+                scroll     = document.getScroll(),
+                size       = document.getSize(),
                 pickersize = this.picker.getSize();
 
-            if (typeOf(x) == 'element')
-            {
+            if (typeOf(x) === 'element') {
                 var where = y || this.options.pickerPosition;
 
-                var elementCoords = x.getCoordinates( document.body );
+                var elementCoords = x.getCoordinates(document.body);
 
-                x = (where == 'left') ? elementCoords.left - pickersize.x
-                    : (where == 'bottom' || where == 'top') ? elementCoords.left
-                    : elementCoords.right;
-                y = (where == 'bottom') ? elementCoords.bottom
-                    : (where == 'top') ? elementCoords.top - pickersize.y
-                    : elementCoords.top;
+                x = (where === 'left') ? elementCoords.left - pickersize.x
+                    : (where === 'bottom' || where === 'top') ? elementCoords.left
+                        : elementCoords.right;
 
-                x += offset.x * ((where && where == 'left') ? -1 : 1);
-                y += offset.y * ((where && where == 'top') ? -1: 1);
+                y = (where === 'bottom') ? elementCoords.bottom
+                    : (where === 'top') ? elementCoords.top - pickersize.y
+                        : elementCoords.top;
+
+                x += offset.x * ((where && where === 'left') ? -1 : 1);
+                y += offset.y * ((where && where === 'top') ? -1 : 1);
             }
 
 
@@ -245,31 +231,33 @@ define(function()
 
             this.picker.setStyles({
                 left: x,
-                top: y
+                top : y
             });
             if (this.shim) this.shim.position();
             return this;
         },
 
-        setBodySize: function(){
+        setBodySize: function () {
             var bodysize = this.bodysize = this.body.getSize();
 
             this.slider.setStyles({
-                width: 2 * bodysize.x,
-                height: bodysize.y
+                top  : 10,
+                width: '100%'
             });
+
             this.oldContents.setStyles({
-                left: bodysize.x,
-                width: bodysize.x,
+                left  : bodysize.x,
+                width : '100%',
                 height: bodysize.y
             });
+
             this.newContents.setStyles({
-                width: bodysize.x,
+                width : '100%',
                 height: bodysize.y
             });
         },
 
-        setColumnContent: function(column, content){
+        setColumnContent: function (column, content) {
             var columnElement = this.columns[column];
             if (!columnElement) return this;
 
@@ -280,20 +268,20 @@ define(function()
             return this;
         },
 
-        setColumnsContent: function(content, fx){
-            var old = this.columns;
-            this.columns = this.newColumns;
+        setColumnsContent: function (content, fx) {
+            var old         = this.columns;
+            this.columns    = this.newColumns;
             this.newColumns = old;
 
-            content.forEach(function(_content, i){
+            content.forEach(function (_content, i) {
                 this.setColumnContent(i, _content);
             }, this);
             return this.setContent(null, fx);
         },
 
-        setColumns: function(columns){
+        setColumns: function (columns) {
             var _columns = this.columns = new Elements(), _newColumns = this.newColumns = new Elements();
-            for (var i = columns; i--;){
+            for (var i = columns; i--;) {
                 _columns.push(new Element('div.column').addClass('column_' + (columns - i)));
                 _newColumns.push(new Element('div.column').addClass('column_' + (columns - i)));
             }
@@ -305,11 +293,11 @@ define(function()
             return this;
         },
 
-        setContent: function(content, fx){
+        setContent: function (content, fx) {
             if (content) return this.setColumnsContent([content], fx);
 
             // swap contents so we can fill the newContents again and animate
-            var old = this.oldContents;
+            var old          = this.oldContents;
             this.oldContents = this.newContents;
             this.newContents = old;
             this.newContents.empty();
@@ -318,96 +306,96 @@ define(function()
 
             this.setBodySize();
 
-            if (fx){
+            if (fx) {
                 this.fx(fx);
             } else {
                 this.slider.setStyle('left', 0);
-                this.oldContents.setStyles({left: 0, opacity: 0});
-                this.newContents.setStyles({left: 0, opacity: 1});
+                this.oldContents.setStyles({
+                    left   : 0,
+                    opacity: 0
+                });
+                this.newContents.setStyles({
+                    left   : 0,
+                    opacity: 1
+                });
             }
             return this;
         },
 
-        fx: function(fx)
-        {
+        fx: function (fx) {
             var oldContents = this.oldContents,
                 newContents = this.newContents,
                 slider      = this.slider,
                 bodysize    = this.bodysize;
 
-            if (fx == 'right')
-            {
+            if (fx === 'right') {
                 oldContents.setStyles({
-                    left    : 0,
-                    opacity : 1
+                    left   : 0,
+                    opacity: 1
                 });
 
                 newContents.setStyles({
-                    left    : bodysize.x,
-                    opacity : 1
+                    left   : bodysize.x,
+                    opacity: 1
                 });
 
                 slider.setStyle('left', 0); // tween('left', 0, -bodysize.x);
 
-                moofx( slider ).animate({
-                    'left' : -bodysize.x
+                moofx(slider).animate({
+                    'left': -bodysize.x
                 });
-            } else if (fx == 'left')
-            {
+            } else if (fx === 'left') {
                 oldContents.setStyles({
-                    left    : bodysize.x,
-                    opacity : 1
+                    left   : bodysize.x,
+                    opacity: 1
                 });
 
                 newContents.setStyles({
-                    left    : 0,
-                    opacity : 1
+                    left   : 0,
+                    opacity: 1
                 });
 
-                slider.setStyle('left', 0); //.tween('left', -bodysize.x, 0);
+                slider.setStyle('left', 0);
 
-                moofx( slider ).animate({
-                    'left' : 0
+                moofx(slider).animate({
+                    'left': 0
                 });
-            } else if (fx == 'fade')
-            {
-                slider.setStyle( 'left', 0 );
-                oldContents.setStyle( 'left', 0 );  /*.set('tween', {
-                    duration: this.options.animationDuration / 2
-                }).tween('opacity', 1, 0).get('tween').chain(function(){
-                    oldContents.setStyle('left', bodysize.x);
-                });
-                */
+            } else if (fx === 'fade') {
+                slider.setStyle('left', 0);
+                oldContents.setStyle('left', 0);
 
-                moofx( oldContents ).animate({
-                    opacity : 0,
-                    left    : bodysize.x
+                moofx(oldContents).animate({
+                    opacity: 0,
+                    left   : bodysize.x
                 });
 
                 newContents.setStyles({
-                    opacity : 1,
-                    left    : 0
-                }); /*.set('tween', {
-                    duration: this.options.animationDuration
-                }).tween('opacity', 0, 1);*/
+                    opacity: 1,
+                    left   : 0
+                });
             }
         },
 
-        toElement: function(){
+        toElement: function () {
             return this.picker;
         },
 
-        setTitle: function(content, fn){
+        setTitle: function (content, fn) {
             if (!fn) fn = Function.from;
+
+            if (typeOf(content) !== 'array') {
+                content = [content];
+            }
+
             this.titleText.empty().adopt(
-                Array.from(content).map(function(item, i){
-                    return typeOf(item) == 'element' ? item : new Element('div.column', {text: fn(item, this.options)}).addClass('column_' + (i + 1));
+                content.map(function (item, i) {
+                    return typeOf(item) === 'element' ? item : new Element('div.column', {text: fn(item, this.options)}).addClass('column_' + (i + 1));
                 }, this)
             );
             return this;
         },
 
-        setTitleEvent: function(fn){
+        setTitleEvent: function (fn) {
             this.titleText.removeEvents('click');
             if (fn) this.titleText.addEvent('click', fn);
             this.titleText.setStyle('cursor', fn ? 'pointer' : '');
