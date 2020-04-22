@@ -1,31 +1,30 @@
 .datepicker_dashboard {
+    background: #fff;
+    border: 1px solid #dedede;
     position: absolute;
     font-size: 10px;
-    font-family: "Lucida Grande", LucidaGrande, "Lucida Sans", Geneva, Verdana, sans-serif;
-    color: #fff;
+    font-family: Verdana, sans-serif;
     line-height: normal;
-    width: 200px;
-    height: 165px;
-    padding: 14px;
-    background: url(frame.png) no-repeat;
+    width: 250px;
+    height: 205px;
+    padding: 10px;
 }
 
 /* header
 ********************************************************/
 .datepicker_dashboard .header {
     position: relative;
-    height: 15px;
     margin-bottom: 5px;
     padding-top: 1px;
 }
 
 .datepicker_dashboard .header .title {
+    font-size: 16px;
     text-align: center;
-    margin: 2px 18px 0 18px;
 }
 
 .datepicker_dashboard .header .titleText {
-    color: #ccff00;
+    color: #2F8FC6;
 }
 
 .datepicker_dashboard .header .previous,
@@ -38,7 +37,6 @@
     width: 12px;
     height: 12px;
     top: 2px;
-    background-image: url(buttons.png);
     background-position: left top;
     background-repeat: no-repeat;
 }
@@ -46,22 +44,27 @@
 .datepicker_dashboard .header .previous {
     left: 4px;
 }
+
 .datepicker_dashboard .header .previous:hover {
     background-position: left bottom;
 }
+
 .datepicker_dashboard .header .next {
     right: 4px;
     background-position: -13px top;
 }
+
 .datepicker_dashboard .header .next:hover {
     background-position: -13px bottom;
 }
+
 .datepicker_dashboard .header .closeButton {
     display: none;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     background-position: right top;
 }
+
 .datepicker_dashboard .header .closeButton:hover {
     background-position: right bottom;
 }
@@ -70,29 +73,37 @@
 ********************************************************/
 .datepicker_dashboard .body {
     position: relative;
-    top: 0px;
+    top: 0;
     left: 2px;
-    width: 168px;
-    height: 112px;
+    width: 230px;
+    height: 170px;
     overflow: hidden;
 }
 
 /* time
 ********************************************************/
+
 .datepicker_dashboard .time {
+    display: inline-block;
     position: relative;
     width: 100%;
     height: 100%;
 }
 
+.datepicker_dashboard .column_1 {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
 .datepicker_dashboard .time .hour,
 .datepicker_dashboard .time .separator,
 .datepicker_dashboard .time .minutes {
-    background: #333;
-    border: 0px;
-    width: 50px;
+    background: #ededed;
+    border: 0;
+    width: 45%;
     font-size: 32px;
-    color: #fff;
     position: absolute;
     top: 10px;
     text-align: center;
@@ -100,44 +111,46 @@
 }
 
 .datepicker_dashboard .time .hour {
-    left: 15px;
+
 }
+
 .datepicker_dashboard .time .separator {
     background: transparent;
+    color: #999;
+    line-height: 30px;
     width: 10px;
-    left: 76px;
+    left: 103px;
 }
 
 .datepicker_dashboard .time .minutes {
-    left: 95px;
+    left: 120px;
 }
+
 .datepicker_dashboard .time .ok {
+    font-size: 12px;
+    height: 32px;
+    left: 0;
     position: absolute;
     top: 65px;
-    height: 32px;
-    width: 136px;
-    left: 15px;
-    font-size: 12px;
+    width: calc(100% - 5px);
 }
 
 /* days-grid
 ********************************************************/
 .datepicker_dashboard .days .day {
-    float: left;
     text-align: center;
-    overflow: hidden;
-    width: 23px;
-    padding-top: 1px;
-    height: 14px;
+    padding: 5px;
     margin: 0 1px 1px 0;
     font-weight: normal;
 }
+
 .datepicker_dashboard .days .titles {
     height: 15px;
     margin-bottom: 2px;
     text-transform: uppercase;
     color: #aaa;
 }
+
 .datepicker_dashboard .days .day0 {
     margin-right: 0;
 }
@@ -151,8 +164,10 @@
 .datepicker_dashboard .days .week .day {
     cursor: pointer;
 }
+
 .datepicker_dashboard .days .week .day:hover {
-    color: #ccff00;
+    background: #2F8FC6;
+    color: #fff;
 }
 
 .datepicker_dashboard .days .otherMonth {
@@ -160,7 +175,8 @@
 }
 
 .datepicker_dashboard .days .selected {
-    color: #ccff00;
+    background: #ededed;
+    color: #666666;
 }
 
 /* months-grid
@@ -192,11 +208,11 @@
 /* months-colors
 ********************************************************/
 .datepicker_dashboard .months .month:hover {
-    color: #ccff00;
+    color: #2F8FC6;
 }
 
 .datepicker_dashboard .months .selected {
-    color: #ccff00;
+    color: #2F8FC6;
 }
 
 /* years-grid
@@ -230,11 +246,11 @@
 /* years-colors
 ********************************************************/
 .datepicker_dashboard .years .year:hover {
-    color: #ccff00;
+    color: #2F8FC6;
 }
 
 .datepicker_dashboard .years .selected {
-    color: #ccff00
+    color: #2F8FC6
 }
 
 /* global
