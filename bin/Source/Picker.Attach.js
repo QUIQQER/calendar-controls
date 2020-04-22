@@ -56,22 +56,34 @@ define(['package/quiqqer/calendar-controls/bin/Source/Picker'], function (Picker
         },
 
         attach: function (attachTo, toggle) {
-            if (typeOf(attachTo) == 'string') {
+            if (typeOf(attachTo) === 'string') {
                 attachTo = document.id(attachTo);
             }
-            if (typeOf(toggle) == 'string') {
+
+            if (typeOf(toggle) === 'string') {
                 toggle = document.id(toggle);
             }
 
-            var elements    = Array.from(attachTo),
-                toggles     = Array.from(toggle),
-                allElements = [].append(elements).combine(toggles),
+            var elements = attachTo,
+                toggles  = toggle;
+
+            if (typeOf(elements) !== 'array') {
+                elements = [attachTo];
+            }
+
+            if (!toggles) {
+                toggles = [];
+            } else if (typeOf(toggles) !== 'array') {
+                toggles = [toggles];
+            }
+
+            var allElements = [].append(elements).combine(toggles),
                 self        = this;
 
             var closeEvent = function (event) {
-                var stopInput  = self.options.blockKeydown && event.type == 'keydown' && !(['tab', 'esc'].contains(event.key)),
-                    isCloseKey = event.type == 'keydown' && (['tab', 'esc'].contains(event.key)),
-                    isA        = event.target.get('tag') == 'a';
+                var stopInput  = self.options.blockKeydown && event.type === 'keydown' && !(['tab', 'esc'].contains(event.key)),
+                    isCloseKey = event.type === 'keydown' && (['tab', 'esc'].contains(event.key)),
+                    isA        = event.target.get('tag') === 'a';
 
                 if (stopInput || isA) {
                     event.preventDefault();
@@ -84,14 +96,14 @@ define(['package/quiqqer/calendar-controls/bin/Source/Picker'], function (Picker
             var getOpenEvent = function (element) {
                 return function (event) {
                     var tag = event.target.get('tag');
-                    if (tag == 'input' && event.type == 'click' && !element.match(':focus') || (self.opened && self.input == element)) {
+                    if (tag === 'input' && event.type === 'click' && !element.match(':focus') || (self.opened && self.input === element)) {
                         return;
                     }
-                    if (tag == 'a') {
+                    if (tag === 'a') {
                         event.stop();
                     }
 
-                    if (tag == 'input' && element.value == '0000-00-00 00:00:00') {
+                    if (tag === 'input' && element.value === '0000-00-00 00:00:00') {
                         element.value = '';
                         element.set('data-oldDate', '0000-00-00 00:00:00');
                     }
@@ -124,7 +136,7 @@ define(['package/quiqqer/calendar-controls/bin/Source/Picker'], function (Picker
                     // closeEvent does not have a depency on element
                     toggleEvent = getToggleEvent(openEvent, closeEvent);
 
-                if (tag == 'input') {
+                if (tag === 'input') {
                     // Fix in order to use togglers only
                     if (!self.options.togglesOnly || !toggles.length) {
                         events = {
@@ -153,16 +165,28 @@ define(['package/quiqqer/calendar-controls/bin/Source/Picker'], function (Picker
         },
 
         detach: function (attachTo, toggle) {
-            if (typeOf(attachTo) == 'string') {
+            if (typeOf(attachTo) === 'string') {
                 attachTo = document.id(attachTo);
             }
-            if (typeOf(toggle) == 'string') {
+            if (typeOf(toggle) === 'string') {
                 toggle = document.id(toggle);
             }
 
-            var elements    = Array.from(attachTo),
-                toggles     = Array.from(toggle),
-                allElements = [].append(elements).combine(toggles),
+            var elements = attachTo,
+                toggles  = toggle;
+
+            if (typeOf(elements) !== 'array') {
+                elements = [attachTo];
+            }
+
+            if (!toggles) {
+                toggles = [];
+            } else if (typeOf(toggles) !== 'array') {
+                toggles = [toggles];
+            }
+
+
+            var allElements = [].append(elements).combine(toggles),
                 self        = this;
 
             if (!allElements.length) {
@@ -181,12 +205,12 @@ define(['package/quiqqer/calendar-controls/bin/Source/Picker'], function (Picker
                 delete self.attachedElements[i];
 
                 var toggleIndex = self.toggles.indexOf(element);
-                if (toggleIndex != -1) {
+                if (toggleIndex !== -1) {
                     delete self.toggles[toggleIndex];
                 }
 
                 var inputIndex = self.inputs.indexOf(element);
-                if (toggleIndex != -1) {
+                if (toggleIndex !== -1) {
                     delete self.inputs[inputIndex];
                 }
             });
