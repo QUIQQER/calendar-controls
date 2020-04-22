@@ -2,6 +2,7 @@
     "name": "quiqqer\/calendar-controls",
     "type": "quiqqer-plugin",
     "description": "Provides various calendar controls \/ elements.",
+    "version": "1.3.0",
     "license": "GPLv2",
     "authors": [
         {
