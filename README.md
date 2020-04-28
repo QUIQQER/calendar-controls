@@ -91,3 +91,24 @@ require([
 });
 
 ```
+
+### JavaScript: TimeFilter / Time Select
+
+```javascript
+
+require(['package/quiqqer/calendar-controls/bin/controls/TimeFilter', function(TimeFilter) {
+
+    // buttons
+    var Filter = new TimeFilter({
+        name  : 'timeFilter',
+        events: {
+            onChange: function() {
+
+            }
+        }
+    });
+
+});
+
+
+```
